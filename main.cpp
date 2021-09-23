@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    string filename = "../Parcial2/images/colombia.jpg";
+    string filename = "../Parcial2/images/colom.jpg";
     QImage im(filename.c_str());
 
     unsigned int pixelX=200;
@@ -21,6 +21,6 @@ int main()
      //      cout<< indx << ","<< indy << "="<<im.pixelColor(indx,indy).red()<<endl;
       // }
    //}
-
+ // termino algortimo
     return 0;
 }
