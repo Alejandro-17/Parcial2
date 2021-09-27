@@ -23,10 +23,12 @@ int main()
        vector <QColor> pix1;
        int limiteX=0,limiteY=0;
        short int Rpromedio=0, Gpromedio=0, Bpromedio=0;
-       while(limiteX < im.width() && limiteY< im.height()){
+       //submuestreo la imagen original en una relacion 4:4 a 1 pixel, es decir
+       //promedio la intensidad RGB de 16 pixeles en  1
+       while( limiteY< im.height()){
        int sumR=0,sumG=0,sumB=0;
-       for (int indx=limiteX; indx<limiteX+4 ; ++indx){
-       for(int indy=0; indy<4; ++indy){
+       for (int indy=limiteY; indy<limiteY+4; ++indy){
+       for(int indx=limiteX; indx<limiteX+4 ; ++indx){
         sumR= sumR + im.pixelColor(indx,indy).red();
         sumG = sumG + im.pixelColor(indx,indy).green();
         sumB= sumB + im.pixelColor(indx,indy).blue();
@@ -37,11 +39,15 @@ int main()
        Bpromedio= sumB /16;
        pix1.push_back(QColor(Rpromedio,Gpromedio,Bpromedio));
        limiteX+=4;
-
+       if(limiteX>=im.width()){
+           limiteX=0;
+           limiteY+=4;}
       // for(auto var:pix1){
         //   cout<<var.green()<<endl;
       // }
-       //cout<<"La capacidad del vector es: "<< pix1.capacity()<<endl;
+
         }
-    return 0;
+        cout<<"el tamano del vector es: "<<pix1.size()<<" La capacidad del vector es: "<< pix1.capacity()<<endl;
+
+        return 0;
 }
